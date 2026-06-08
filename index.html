@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Our Lady of Fatima Vocational Training Centre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+    <!-- Libraries -->
+    <link rel="stylesheet" href="lib/animate/animate.min.css">
+    <link rel="stylesheet" href="lib/owlcarousel/assets/owl.carousel.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Theme overrides (reduced palette, cleaner nav) -->
+    <style>
+        :root{
+            --primary: #005f99; /* deep blue */
+            --accent:  #ff8c00; /* soft orange */
+            --muted:   #e9f3fa; /* very light blue */
+            --dark:    #222;
+            --muted-text: #6b7280;
+        }
+
+        /* Typography tweaks */
+        body { font-family: 'Heebo', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color: var(--dark); }
+
+        /* Navbar */
+        .glass-nav { background: rgba(255,255,255,0.9); backdrop-filter: blur(8px); transition: all .3s ease; }
+        .glass-nav.shrink{ padding-top:.4rem; padding-bottom:.4rem; box-shadow:0 6px 18px rgba(0,0,0,.08); }
+        #logo{ height:84px; transition:height .25s ease; }
+        .glass-nav.shrink #logo{ height:68px; }
+
+        .navbar-nav .nav-link{ color:var(--dark) !important; font-weight:600; position:relative; margin:0 10px; }
+        /* solid orange underline on hover/active */
+        .navbar-nav .nav-link::after{ content:''; position:absolute; left:0; bottom:-6px; height:3px; width:0; background:var(--accent); transition:width .25s ease; border-radius:2px; }
+        .navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active::after{ width:100%; }
+
+        /* center nav, search on right */
+        .navbar .nav-center{ margin:0 auto; display:flex; gap:6px; align-items:center; }
+
+        /* search */
+        .search-box input{ width:180px; transition:width .25s ease; border-radius:22px; border:1px solid rgba(0,0,0,.08); padding:6px 12px; }
+        .search-box input:focus{ width:260px; outline:none; box-shadow:0 6px 18px rgba(0,95,153,.08); }
+
+        /* enroll button */
+        .btn-enroll{ background:var(--accent); color:#fff; border-radius:999px; padding:8px 18px; font-weight:700; }
+        .btn-enroll:hover{ background:#cc7000; transform:translateY(-2px); }
+
+        /* simplify icon colors used across site */
+        .text-primary{ color:var(--primary) !important; }
+        .text-accent{ color:var(--accent) !important; }
+
+        /* overlay for carousel to use muted instead of dark rainbow */
+        .overlay-dark{ background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55)); }
+
+        /* Services and cards */
+        .service-item .fa{ color:var(--primary); }
+        .course-item{ border-radius:8px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,.04); }
+
+        /* footer */
+        .footer h4{ color:var(--muted-text); }
+        .btn-sm-square{ width:38px; height:38px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px; }
+        .footer .btn-sm-square i{ color:#fff; }
+
+        /* responsive adjustments */
+        @media (max-width: 991px){
+            .search-box{ display:none; }
+            .navbar-nav{ background:rgba(255,255,255,0.98); padding:8px 12px; border-radius:10px; }
+            #logo{ height:72px; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border" style="width:3rem; height:3rem; color: var(--primary);" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+<!-- Navbar -->
+<!-- Navbar -->
+<nav id="mainNavbar" class="navbar navbar-expand-lg glass-nav sticky-top py-3">
+    <div class="container-fluid px-4 px-lg-5 d-flex align-items-center">
+        <a href="index.html" class="navbar-brand d-flex align-items-center me-3">
+            <img src="img/logo.png" alt="Our Lady of Fatima Logo" id="logo">
+        </a>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-label="Toggle navigation">
+            <i class="fas fa-bars" style="font-size:24px;color:#222;"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav nav-center fw-bold mx-auto align-items-lg-center">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">What We Offer</a>
+                    <ul class="dropdown-menu rounded-3 border-0 shadow-sm">
+                        <li><a href="courses.html" class="dropdown-item">All Courses</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a href="courses.html#hairdressing" class="dropdown-item">Hairdressing</a></li>
+                        <li><a href="courses.html#bakerystudies" class="dropdown-item">Bakery Studies</a></li>
+                        <li><a href="courses.html#catering" class="dropdown-item">Catering</a></li>
+                        <li><a href="courses.html#cuttingdesigning" class="dropdown-item">Cutting &amp; Designing</a></li>
+                        <li><a href="courses.html#interiorhomedecor" class="dropdown-item">Interior Home Decor</a></li>
+                        <li><a href="courses.html#beautytherapy" class="dropdown-item">Beauty Therapy</a></li>
+                        <li><a href="courses.html#computers" class="dropdown-item">Computers</a></li>
+                        <li><a href="courses.html#welding" class="dropdown-item">Welding &amp; Sheet Metalwork</a></li>
+                        <li><a href="courses.html#woodwork" class="dropdown-item">Woodwork</a></li>
+                        <li><a href="courses.html#eventsdecor" class="dropdown-item">Events Decor</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="events.php" class="nav-link">News &amp; Updates</a></li>
+                <li class="nav-item"><a href="gallery.php" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="contact.php" class="nav-link">Contact Us</a></li>
+                <li class="nav-item"><a href="portal.php" class="nav-link">Student Portal</a></li>
+            </ul>
+            <div class="d-flex align-items-center ms-3">
+                <a href="enroll.php" class="btn btn-enroll d-none d-lg-inline">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <script>
+        const navbar = document.querySelector('.glass-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) navbar.classList.add('shrink');
+            else navbar.classList.remove('shrink');
+        });
+    </script>
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0 mb-5">
+        <div class="owl-carousel header-carousel position-relative">
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="img/carousel-1.jpg" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center overlay-dark">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Vocational Training</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Empowering Skills for a Brighter Future</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">Join Our Lady of Fatima Vocational Training Centre and learn practical skills for professional success in bakery, design, decor, hairdressing, and carpentry.</p>
+                                <a href="about.html" class="btn btn-outline-light py-md-3 px-md-5 me-3 animated slideInLeft">Read More</a>
+                                <a href="contact.php" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="owl-carousel-item position-relative">
+                <img class="img-fluid" src="img/carousel-2.jpg" alt="">
+                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center overlay-dark">
+                    <div class="container">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-10 col-lg-8">
+                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Practical Skills</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Hands-On Training to Boost Your Career</h1>
+                                <p class="fs-5 text-white mb-4 pb-2">We offer specialized courses in bakery, cutting and design, home decor, events decor, hairdressing, and carpentry to prepare you for the workforce.</p>
+                                <a href="courses.html" class="btn btn-outline-light py-md-3 px-md-5 me-3 animated slideInLeft">Learn More</a>
+                                <a href="contact.php" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+    <script>
+    $(document).ready(function(){
+        $(".header-carousel").owlCarousel({
+            autoplay: true,
+            smartSpeed: 1000,
+            autoplayTimeout: 5000,
+            items: 1,
+            dots: true,
+            loop: true,
+            nav: false
+        });
+    });
+    </script>
+
+    <!-- Services Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
+                            <h5 class="mb-3">Skilled Instructors</h5>
+                            <p>Learn from highly experienced instructors dedicated to your success.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-tools text-primary mb-4"></i>
+                            <h5 class="mb-3">Practical Training</h5>
+                            <p>Hands-on experience in bakery, design, decor, hairdressing, and carpentry.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-certificate text-primary mb-4"></i>
+                            <h5 class="mb-3">International Certificate</h5>
+                            <p>Receive recognized certificates that enhance employability and credibility.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6">
+                    <div class="service-item text-center pt-3">
+                        <div class="p-4">
+                            <i class="fa fa-3x fa-home text-primary mb-4"></i>
+                            <h5 class="mb-3">Career Opportunities</h5>
+                            <p>We prepare students for self-employment and local business opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+    <!-- About Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6" style="min-height:400px;">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid position-absolute w-100 h-100" src="img/about.jpg" alt="" style="object-fit:cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
+                    <h1 class="mb-4">Welcome to Our Lady of Fatima Vocational Training Centre</h1>
+                    <p class="mb-4">Our mission is to empower youth and adults with practical skills for employability and entrepreneurship. We provide a range of vocational courses designed to equip students with real-world experience.</p>
+                    <p class="mb-4">Our programs include bakery, cutting and design, home decor, events decor, hairdressing, and carpentry. Students learn from experienced instructors and gain hands-on training.</p>
+                    <div class="row gy-2 gx-4 mb-4">
+                        <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p></div>
+                        <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Practical Training</p></div>
+                        <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p></div>
+                        <div class="col-sm-6"><p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Career Opportunities</p></div>
+                    </div>
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="contact.php">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Courses Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
+                <h1 class="mb-4">Our Vocational Courses</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <!-- course cards (kept same content) -->
+                <!-- ... -->
+            </div>
+        </div>
+    </div>
+    <!-- Courses End -->
+
+        <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary mb-3">Quick Links</h4>
+                    <a class="btn btn-link text-light" href="about.html">About Us</a>
+                    <a class="btn btn-link text-light" href="contact.php">Contact Us</a>
+                    <a class="btn btn-link text-light" href="privacy.html">Privacy Policy</a>
+                    <a class="btn btn-link text-light" href="terms.html">Terms &amp; Conditions</a>
+                    <a class="btn btn-link text-light" href="faq.html">FAQs &amp; Help</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary mb-3">Contact</h4>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Stand No. 24574 Pumula South, Bulawayo</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+263 773 833 645</p>
+                    <p><i class="fa fa-envelope me-3"></i>info@ourladyoffatima.co.zw</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-sm-square mx-1" style="background:#005f99;" href="#"><i class="fab fa-twitter" style="color:#fff;"></i></a>
+                        <a class="btn btn-sm-square mx-1" style="background:#ff8c00;" href="https://www.facebook.com/people/Our-Lady-Of-Fatima-VTC/61583791887969/" target="_blank" rel="noopener"><i class="fab fa-facebook-f" style="color:#fff;"></i></a>
+                        <a class="btn btn-sm-square mx-1" style="background:#005f99;" href="#"><i class="fab fa-youtube" style="color:#fff;"></i></a>
+                        <a class="btn btn-sm-square mx-1" style="background:#005f99;" href="#"><i class="fab fa-linkedin-in" style="color:#fff;"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary mb-3">Gallery</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt=""></div>
+                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt=""></div>
+                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt=""></div>
+                    </div>
+                    <a href="gallery.php" class="btn btn-sm btn-outline-light mt-3">View Gallery</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary mb-3">Newsletter</h4>
+                    <p>Subscribe to get updates on new courses and events.</p>
+                    <input type="text" id="nl-hp-9c81a2" style="display:none!important;" tabindex="-1" autocomplete="off">
+                    <div class="position-relative mx-auto" style="max-width:400px;">
+                        <input id="nl-email-9c81a2" class="form-control border-0 w-100 py-3 ps-4 pe-5" type="email" placeholder="Your email address">
+                        <button id="nl-btn-9c81a2" type="button" class="btn position-absolute top-0 end-0 py-3 px-4" style="background:#005f99;color:#fff;border-radius:0 6px 6px 0;">Sign Up</button>
+                    </div>
+                    <div id="nl-msg-9c81a2" class="mt-2 small" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright py-3">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">&copy; <a class="border-bottom text-primary" href="index.html">Our Lady of Fatima Vocational Training Centre</a>, All Rights Reserved.</div>
+                    <div class="col-md-6 text-center text-md-end"><div class="footer-menu"><a class="text-light" href="index.html">Home</a><a class="text-light" href="contact.php">Help</a><a class="text-light" href="faq.html">FAQ</a></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    <script>
+    (function(){
+        var pid='9c81a2';
+        var btn=document.getElementById('nl-btn-'+pid),inp=document.getElementById('nl-email-'+pid),msg=document.getElementById('nl-msg-'+pid);
+        if(!btn) return;
+        btn.addEventListener('click',async function(){
+            var email=(inp.value||'').trim();
+            if(!email){msg.className='mt-2 small text-warning';msg.textContent='Please enter your email.';msg.style.display='block';return;}
+            btn.disabled=true;btn.textContent='...';
+            try{var r=await fetch('newsletter.php',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'email='+encodeURIComponent(email)});var d=await r.json();msg.className='mt-2 small '+(d.success?'text-success':'text-danger');msg.textContent=d.message;msg.style.display='block';if(d.success)inp.value='';}
+            catch(e){msg.className='mt-2 small text-danger';msg.textContent='Something went wrong.';msg.style.display='block';}
+            finally{btn.disabled=false;btn.textContent='Sign Up';}
+        });
+    })();
+    </script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

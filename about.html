@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Our Lady of Fatima Vocational Training Centre</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+
+    <!-- Libraries -->
+    <link rel="stylesheet" href="lib/animate/animate.min.css">
+    <link rel="stylesheet" href="lib/owlcarousel/assets/owl.carousel.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Theme overrides (reduced palette, cleaner nav) -->
+    <style>
+        :root{
+            --primary: #005f99; /* deep blue */
+            --accent:  #ff8c00; /* soft orange */
+            --muted:   #e9f3fa; /* very light blue */
+            --dark:    #222;
+            --muted-text: #6b7280;
+        }
+
+        /* Typography tweaks */
+        body { font-family: 'Heebo', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color: var(--dark); }
+
+        /* Navbar */
+        .glass-nav { background: rgba(255,255,255,0.9); backdrop-filter: blur(8px); transition: all .3s ease; }
+        .glass-nav.shrink{ padding-top:.4rem; padding-bottom:.4rem; box-shadow:0 6px 18px rgba(0,0,0,.08); }
+        #logo{ height:84px; transition:height .25s ease; }
+        .glass-nav.shrink #logo{ height:68px; }
+
+        .navbar-nav .nav-link{ color:var(--dark) !important; font-weight:600; position:relative; margin:0 10px; }
+        /* solid orange underline on hover/active */
+        .navbar-nav .nav-link::after{ content:''; position:absolute; left:0; bottom:-6px; height:3px; width:0; background:var(--accent); transition:width .25s ease; border-radius:2px; }
+        .navbar-nav .nav-link:hover::after, .navbar-nav .nav-link.active::after{ width:100%; }
+
+        /* center nav, search on right */
+        .navbar .nav-center{ margin:0 auto; display:flex; gap:6px; align-items:center; }
+
+        /* search */
+        .search-box input{ width:180px; transition:width .25s ease; border-radius:22px; border:1px solid rgba(0,0,0,.08); padding:6px 12px; }
+        .search-box input:focus{ width:260px; outline:none; box-shadow:0 6px 18px rgba(0,95,153,.08); }
+
+        /* enroll button */
+        .btn-enroll{ background:var(--accent); color:#fff; border-radius:999px; padding:8px 18px; font-weight:700; }
+        .btn-enroll:hover{ background:#cc7000; transform:translateY(-2px); }
+
+        /* simplify icon colors used across site */
+        .text-primary{ color:var(--primary) !important; }
+        .text-accent{ color:var(--accent) !important; }
+
+        /* overlay for carousel to use muted instead of dark rainbow */
+        .overlay-dark{ background: linear-gradient(to bottom, rgba(0,0,0,0.35), rgba(0,0,0,0.55)); }
+
+        /* Services and cards */
+        .service-item .fa{ color:var(--primary); }
+        .course-item{ border-radius:8px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,.04); }
+
+        /* footer */
+        .footer h4{ color:var(--muted-text); }
+        .btn-sm-square{ width:38px; height:38px; display:inline-flex; align-items:center; justify-content:center; border-radius:6px; }
+        .footer .btn-sm-square i{ color:#fff; }
+
+        /* responsive adjustments */
+        @media (max-width: 991px){
+            .search-box{ display:none; }
+            .navbar-nav{ background:rgba(255,255,255,0.98); padding:8px 12px; border-radius:10px; }
+            #logo{ height:72px; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Spinner -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border" style="width:3rem; height:3rem; color: var(--primary);" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+<!-- Navbar -->
+<!-- Navbar -->
+<nav id="mainNavbar" class="navbar navbar-expand-lg glass-nav sticky-top py-3">
+    <div class="container-fluid px-4 px-lg-5 d-flex align-items-center">
+        <a href="index.html" class="navbar-brand d-flex align-items-center me-3">
+            <img src="img/logo.png" alt="Our Lady of Fatima Logo" id="logo">
+        </a>
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-label="Toggle navigation">
+            <i class="fas fa-bars" style="font-size:24px;color:#222;"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav nav-center fw-bold mx-auto align-items-lg-center">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">What We Offer</a>
+                    <ul class="dropdown-menu rounded-3 border-0 shadow-sm">
+                        <li><a href="courses.html" class="dropdown-item">All Courses</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a href="courses.html#hairdressing" class="dropdown-item">Hairdressing</a></li>
+                        <li><a href="courses.html#bakerystudies" class="dropdown-item">Bakery Studies</a></li>
+                        <li><a href="courses.html#catering" class="dropdown-item">Catering</a></li>
+                        <li><a href="courses.html#cuttingdesigning" class="dropdown-item">Cutting &amp; Designing</a></li>
+                        <li><a href="courses.html#interiorhomedecor" class="dropdown-item">Interior Home Decor</a></li>
+                        <li><a href="courses.html#beautytherapy" class="dropdown-item">Beauty Therapy</a></li>
+                        <li><a href="courses.html#computers" class="dropdown-item">Computers</a></li>
+                        <li><a href="courses.html#welding" class="dropdown-item">Welding &amp; Sheet Metalwork</a></li>
+                        <li><a href="courses.html#woodwork" class="dropdown-item">Woodwork</a></li>
+                        <li><a href="courses.html#eventsdecor" class="dropdown-item">Events Decor</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="events.php" class="nav-link">News &amp; Updates</a></li>
+                <li class="nav-item"><a href="gallery.php" class="nav-link">Gallery</a></li>
+                <li class="nav-item"><a href="contact.php" class="nav-link">Contact Us</a></li>
+                <li class="nav-item"><a href="portal.php" class="nav-link">Student Portal</a></li>
+            </ul>
+            <div class="d-flex align-items-center ms-3">
+                <a href="enroll.php" class="btn btn-enroll d-none d-lg-inline">Enroll Now</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <script>
+        const navbar = document.querySelector('.glass-nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) navbar.classList.add('shrink');
+            else navbar.classList.remove('shrink');
+        });
+    </script>
+
+
+    <!-- Header Start -->
+    <div class="container-fluid bg-primary py-5 mb-5 page-header">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="display-3 text-white animated slideInDown">About Us</h1>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-center">
+                            <li class="breadcrumb-item"><a class="text-white" href="index.html">Home</a></li>
+                            <li class="breadcrumb-item text-white active" aria-current="page">About Us</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <!-- About Core Start -->
+    <div class="container-xxl py-5">
+        <div class="container about-section wow fadeInUp" data-wow-delay="0.1s">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <div class="position-relative h-100">
+                        <img class="img-fluid rounded shadow-lg" src="img/about.jpg" alt="About Our Lady of Fatima Vocational Training Centre" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="divider"></div>
+                    <h6 class="section-title bg-white text-start text-primary pe-3">Who We Are</h6>
+                    <h1 class="mb-4">Empowering Skills, Building Futures</h1>
+                    <p class="mb-3">
+                        Our Lady of Fatima Vocational Training Centre is dedicated to equipping students with practical skills that empower them to build sustainable livelihoods and contribute meaningfully to society. We offer a diverse range of hands-on training programs designed to prepare learners for employment, entrepreneurship, and community development.
+                    </p>
+                    <p class="mb-3">
+                        Established with a vision of transforming lives through education, our institution promotes excellence, discipline, and creativity — guided by Christian values and a strong commitment to service.
+                    </p>
+
+                    <div class="row gy-2 gx-4 mb-4 feature-list">
+                        <div class="col-sm-6">
+                            <p><i class="fa fa-check-circle me-2"></i>Qualified Instructors</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p><i class="fa fa-check-circle me-2"></i>Hands-On Training</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p><i class="fa fa-check-circle me-2"></i>Modern Facilities</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p><i class="fa fa-check-circle me-2"></i>Career Guidance</p>
+                        </div>
+                    </div>
+
+                    <a class="btn btn-primary py-3 px-5 mt-2" href="courses.html">Explore Courses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About Core End -->
+
+    <!-- Mission / Vision / Values Start -->
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="info-card text-center">
+                    <i class="fa fa-bullseye fa-3x text-primary mb-3"></i>
+                    <h5>Our Mission</h5>
+                    <p>To provide quality vocational and technical training that empowers students with life-changing skills, enabling them to become self-reliant, responsible citizens who contribute positively to their communities.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="info-card text-center">
+                    <i class="fa fa-eye fa-3x text-primary mb-3"></i>
+                    <h5>Our Vision</h5>
+                    <p>To be a leading centre of excellence in vocational education and training, nurturing creativity, innovation, and entrepreneurship for a better and more productive society.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="info-card text-center">
+                    <i class="fa fa-heart fa-3x text-primary mb-3"></i>
+                    <h5>Our Core Values</h5>
+                    <p>Faith, Integrity, Excellence, Service, Discipline, and Compassion — these values guide our teaching, learning, and community engagement.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mission / Vision / Values End -->
+
+    <!-- History / Timeline Start -->
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <h3 class="text-primary fw-bold">Our History</h3>
+                <p class="text-muted">A short history of Our Lady of Fatima Vocational Training Centre and its journey toward community impact and skills development.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <h6>1998 — Foundation</h6>
+                        <p>Our Lady of Fatima Vocational Training Centre was established to offer practical skills training to youth and women in the local community.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <h6>2005 — Program Expansion</h6>
+                        <p>The centre expanded its programs to include catering, bakery studies, and cutting & designing in response to community demand.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <h6>2015 — Facilities Upgrade</h6>
+                        <p>Major investment in modern workshops, computer labs, and a resource centre improved the quality of hands-on instruction.</p>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="dot"></div>
+                        <h6>2023 — Community Partnerships</h6>
+                        <p>Partnered with local businesses and NGOs to support internships, placements, and community outreach projects.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us -->
+            <div class="col-lg-4">
+                <div class="info-card">
+                    <h5>Why Choose Our Lady of Fatima Vocational Training Centre?</h5>
+                    <ul class="list-unstyled mt-3 mb-0">
+                        <li class="mb-2"><i class="fa fa-check text-accent me-2"></i>Practical, employer-relevant training</li>
+                        <li class="mb-2"><i class="fa fa-check text-accent me-2"></i>Student-centered learning & mentorship</li>
+                        <li class="mb-2"><i class="fa fa-check text-accent me-2"></i>Strong Christian values and ethical formation</li>
+                        <li class="mb-2"><i class="fa fa-check text-accent me-2"></i>Linkages with local industry for placements</li>
+                        <li class="mb-2"><i class="fa fa-check text-accent me-2"></i>Flexible short courses and full programs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- History / Timeline End -->
+
+    <!-- Accreditation & Partnerships Start -->
+    <div class="container py-4">
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <div class="info-card">
+                    <h5>Accreditation & Partnerships</h5>
+                    <p>Our Lady of Fatima Vocational Training Centre is committed to high standards of teaching and learning. We are registered with relevant national training authorities and maintain working relationships with local businesses, churches, and NGOs to ensure our curriculum remains relevant and provides real pathways to employment.</p>
+                    <p class="mb-0"><strong>Key Partners:</strong> Local industry partners, community churches, microfinance institutions, and development NGOs.</p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="info-card">
+                    <h5>Achievements & Impact</h5>
+                    <p>Over the years, we have:</p>
+                    <ul>
+                        <li>Trained hundreds of graduates now running small enterprises.</li>
+                        <li>Supported job placements and internships with local employers.</li>
+                        <li>Hosted community outreach and skills days benefiting neighboring areas.</li>
+                    </ul>
+                    <p class="mb-0">We continuously document graduate success stories and track outcomes to improve our programs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Accreditation & Partnerships End -->
+
+    <!-- Principal's Message Start -->
+    <div class="container py-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-4 text-center wow fadeInUp" data-wow-delay="0.1s">
+                <img src="img/principal.jpg" class="img-fluid rounded-circle" alt="Principal" style="width:180px;height:180px;object-fit:cover;border:6px solid rgba(0,191,255,0.12);">
+            </div>
+            <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.3s">
+                <h4 class="text-primary">Message from the Principal</h4>
+                <p class="text-muted">"At Our Lady of Fatima Vocational Training Centre, we believe every student has the potential to succeed. Our programmes are designed to provide not only technical skills but also the confidence and character needed to thrive. We welcome learners from all backgrounds and look forward to supporting your learning journey."</p>
+                <p class="mb-0"><strong>Mr Augustine Ncube</strong><br><small>Principal, Our Lady of Fatima Vocational Training Centre</small></p>
+            </div>
+        </div>
+    </div>
+    <!-- Principal's Message End -->
+
+    <!-- Leadership Start -->
+    <div class="container py-4">
+        <div class="text-center mb-4">
+            <h3 class="text-primary fw-bold">Our Leadership Team</h3>
+            <p class="text-muted">Committed to professional formation, pastoral care, and strategic stewardship.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-sm-6 col-md-4 text-center leadership-card wow fadeInUp" data-wow-delay="0.1s">
+                <img src="img/principal.jpg" alt="Principal">
+                <h6>Mr Augustine Ncube</h6>
+                <span>Principal</span>
+            </div>
+            <div class="col-sm-6 col-md-4 text-center leadership-card wow fadeInUp" data-wow-delay="0.2s">
+                <img src="img/deputy.jpg" alt="Deputy Principal">
+                <h6></h6>
+                <span>Deputy Principal</span>
+            </div>
+            <div class="col-sm-6 col-md-4 text-center leadership-card wow fadeInUp" data-wow-delay="0.3s">
+                <img src="img/admin.jpg" alt="Administrator">
+                <h6>Mrs Nyathi</h6>
+                <span>Administrator</span>
+            </div>
+        </div>
+    </div>
+    <!-- Leadership End -->
+
+    <!-- Impact / Community Start -->
+    <div class="container py-4">
+        <div class="impact-section text-center wow fadeInUp" data-wow-delay="0.2s">
+            <h2>Community Impact</h2>
+            <p>We are proud to have supported students who have become entrepreneurs, skilled artisans, and trustworthy employees. Through outreach, training camps, and partnerships with local businesses, Our Lady of Fatima Vocational Training Centre contributes to local economic development and social upliftment.</p>
+            <p class="mb-0">Our graduates serve as living testimonies of the transformation that quality skills training can bring.</p>
+        </div>
+    </div>
+    <!-- Impact / Community End -->
+
+    <!-- Testimonials Start -->
+    <div class="container py-5">
+        <div class="text-center mb-4">
+            <h3 class="text-primary fw-bold">Student Testimonials</h3>
+            <p class="text-muted">Real stories from our learners and graduates.</p>
+        </div>
+
+        <div class="owl-carousel testimonial-carousel owl-theme">
+            <div class="testimonial item">
+                <p class="quote">"The hands-on training I received changed my life — I can now run a bakery and provide for my family."</p>
+                <p class="author">— Rudo M., Bakery Graduate</p>
+            </div>
+            <div class="testimonial item">
+                <p class="quote">"Teachers here challenge and support you. The internships led me to a job at a local hotel."</p>
+                <p class="author">— Tendai K., Catering Graduate</p>
+            </div>
+            <div class="testimonial item">
+                <p class="quote">"I learned practical sewing and design skills. I now sell my own clothing locally."</p>
+                <p class="author">— Nyasha P., Cutting & Designing Graduate</p>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonials End -->
+
+    <!-- Call To Action -->
+    <div class="container py-5">
+        <div class="info-card text-center">
+            <h4 class="text-primary">Ready to start your journey?</h4>
+            <p class="mb-3">Enroll today at Our Lady of Fatima Vocational Training Centre and take the first step toward practical skills and a brighter future.</p>
+            <a class="btn btn-accent py-3 px-5" href="admissions.html">Apply Now</a>
+        </div>
+    </div>
+
+        <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary mb-3">Quick Links</h4>
+                    <a class="btn btn-link text-light" href="about.html">About Us</a>
+                    <a class="btn btn-link text-light" href="contact.php">Contact Us</a>
+                    <a class="btn btn-link text-light" href="privacy.html">Privacy Policy</a>
+                    <a class="btn btn-link text-light" href="terms.html">Terms &amp; Conditions</a>
+                    <a class="btn btn-link text-light" href="faq.html">FAQs &amp; Help</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary mb-3">Contact</h4>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Stand No. 24574 Pumula South, Bulawayo</p>
+                    <p><i class="fa fa-phone-alt me-3"></i>+263 773 833 645</p>
+                    <p><i class="fa fa-envelope me-3"></i>info@ourladyoffatima.co.zw</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-sm-square mx-1" style="background:#005f99;" href="#"><i class="fab fa-twitter" style="color:#fff;"></i></a>
+                        <a class="btn btn-sm-square mx-1" style="background:#ff8c00;" href="https://www.facebook.com/people/Our-Lady-Of-Fatima-VTC/61583791887969/" target="_blank" rel="noopener"><i class="fab fa-facebook-f" style="color:#fff;"></i></a>
+                        <a class="btn btn-sm-square mx-1" style="background:#005f99;" href="#"><i class="fab fa-youtube" style="color:#fff;"></i></a>
+                        <a class="btn btn-sm-square mx-1" style="background:#005f99;" href="#"><i class="fab fa-linkedin-in" style="color:#fff;"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary mb-3">Gallery</h4>
+                    <div class="row g-2 pt-2">
+                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt=""></div>
+                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt=""></div>
+                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt=""></div>
+                    </div>
+                    <a href="gallery.php" class="btn btn-sm btn-outline-light mt-3">View Gallery</a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="text-primary mb-3">Newsletter</h4>
+                    <p>Subscribe to get updates on new courses and events.</p>
+                    <input type="text" id="nl-hp-e12704" style="display:none!important;" tabindex="-1" autocomplete="off">
+                    <div class="position-relative mx-auto" style="max-width:400px;">
+                        <input id="nl-email-e12704" class="form-control border-0 w-100 py-3 ps-4 pe-5" type="email" placeholder="Your email address">
+                        <button id="nl-btn-e12704" type="button" class="btn position-absolute top-0 end-0 py-3 px-4" style="background:#005f99;color:#fff;border-radius:0 6px 6px 0;">Sign Up</button>
+                    </div>
+                    <div id="nl-msg-e12704" class="mt-2 small" style="display:none;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright py-3">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">&copy; <a class="border-bottom text-primary" href="index.html">Our Lady of Fatima Vocational Training Centre</a>, All Rights Reserved.</div>
+                    <div class="col-md-6 text-center text-md-end"><div class="footer-menu"><a class="text-light" href="index.html">Home</a><a class="text-light" href="contact.php">Help</a><a class="text-light" href="faq.html">FAQ</a></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+    <script>
+    (function(){
+        var pid='e12704';
+        var btn=document.getElementById('nl-btn-'+pid),inp=document.getElementById('nl-email-'+pid),msg=document.getElementById('nl-msg-'+pid);
+        if(!btn) return;
+        btn.addEventListener('click',async function(){
+            var email=(inp.value||'').trim();
+            if(!email){msg.className='mt-2 small text-warning';msg.textContent='Please enter your email.';msg.style.display='block';return;}
+            btn.disabled=true;btn.textContent='...';
+            try{var r=await fetch('newsletter.php',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'email='+encodeURIComponent(email)});var d=await r.json();msg.className='mt-2 small '+(d.success?'text-success':'text-danger');msg.textContent=d.message;msg.style.display='block';if(d.success)inp.value='';}
+            catch(e){msg.className='mt-2 small text-danger';msg.textContent='Something went wrong.';msg.style.display='block';}
+            finally{btn.disabled=false;btn.textContent='Sign Up';}
+        });
+    })();
+    </script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

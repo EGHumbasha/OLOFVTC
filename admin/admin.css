@@ -1,0 +1,48 @@
+/* ── Admin Panel Styles ── */
+:root { --sidebar-bg:#1e2a35; --sidebar-w:230px; --accent:#005f99; }
+body { background:#f4f6f9; font-family:'Segoe UI',Roboto,sans-serif; margin:0; }
+
+/* Sidebar */
+.sidebar {
+    position:fixed; left:0; top:0; width:var(--sidebar-w); height:100vh;
+    background:var(--sidebar-bg); color:#fff; padding:0; z-index:1100;
+    display:flex; flex-direction:column; transition:transform .3s;
+    overflow-y:auto;
+}
+.sidebar .brand {
+    padding:20px 18px 14px; border-bottom:1px solid rgba(255,255,255,.08);
+    display:flex; align-items:center; gap:10px;
+}
+.sidebar .brand img { height:46px; }
+.sidebar a {
+    display:flex; align-items:center; gap:10px;
+    color:rgba(255,255,255,.82); padding:11px 18px;
+    text-decoration:none; font-size:.9rem; transition:background .2s,color .2s;
+}
+.sidebar a:hover, .sidebar a.active { background:rgba(255,255,255,.1); color:#fff; border-left:3px solid var(--accent); }
+.sidebar .logout-btn { margin-top:auto; background:#c0392b; color:#fff; border-left:none!important; }
+.sidebar .logout-btn:hover { background:#a93226; }
+
+/* Main content */
+.main { margin-left:var(--sidebar-w); padding:28px 32px; min-height:100vh; transition:margin-left .3s; }
+.toggle-btn { position:fixed; top:14px; left:14px; z-index:1200; border:none; background:rgba(255,255,255,.85); border-radius:6px; padding:6px 10px; cursor:pointer; font-size:18px; box-shadow:0 2px 8px rgba(0,0,0,.12); display:none; }
+
+/* Stat cards */
+.stat-card { background:#fff; border-radius:10px; padding:20px 22px; box-shadow:0 3px 12px rgba(0,0,0,.06); display:flex; align-items:center; gap:16px; }
+.stat-card .icon { width:52px; height:52px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:#fff; }
+.stat-card .num { font-size:1.8rem; font-weight:700; line-height:1; }
+.stat-card .lbl { font-size:.82rem; color:#6c757d; }
+
+/* Tables */
+.table img { border-radius:4px; }
+
+/* Flash */
+.flash-bar { border-radius:8px; }
+
+/* Mobile */
+@media(max-width:767px){
+    .sidebar { transform:translateX(-100%); }
+    .sidebar.open { transform:translateX(0); }
+    .main { margin-left:0; padding:20px 16px; }
+    .toggle-btn { display:block; }
+}
