@@ -1,9 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['admin_id'])) {
-    header("Location: login.php");
-    exit;
-}
+require 'auth.php';
 
 // Check if file is provided
 if (!isset($_GET['file']) || empty($_GET['file'])) {

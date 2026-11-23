@@ -1,0 +1,40 @@
+Options -Indexes
+ServerSignature Off
+
+<FilesMatch "\.php$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+<FilesMatch "^(login|logout|forgot_password|reset_password|force_change_password|keep_alive|dashboard|upload|events|edit_event|view_event|messages|subscribers|users|edit_user|delete_user|toggle_user|delete_event|delete_upload|export_subscribers|site_settings)\.php$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+<FilesMatch "\.(sql|log|env|sh|bak|md|json)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+<IfModule mod_headers.c>
+    Header always set X-Frame-Options "DENY"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Cache-Control "no-store, no-cache, must-revalidate"
+    Header always set Pragma "no-cache"
+    Header unset Server
+    Header unset X-Powered-By
+</IfModule>
+
+<IfModule mod_php8.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_value session.cookie_httponly 1
+    php_value session.cookie_samesite Strict
+    php_value session.use_strict_mode 1
+    php_value session.gc_maxlifetime 1800
+</IfModule>
+<IfModule mod_php7.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_value session.cookie_httponly 1
+    php_value session.use_strict_mode 1
+    php_value session.gc_maxlifetime 1800
+</IfModule>

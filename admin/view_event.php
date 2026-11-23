@@ -1,6 +1,7 @@
 <?php
-session_start(); require "db.php";
-if (!isset($_SESSION['admin_id'])) { header("Location: login.php"); exit; }
+session_start();
+require 'db.php';
+require 'auth.php';
 $id=intval($_GET['id']??0); if($id<=0){header("Location: events.php");exit;}
 $stmt=$conn->prepare("SELECT * FROM events WHERE id=?"); $stmt->execute([$id]);
 $event=$stmt->fetch(); if(!$event){header("Location: events.php");exit;}
@@ -19,4 +20,5 @@ if(!empty($event['image'])&&file_exists(__DIR__.'/'.$img)): ?>
 <h2 class="mt-2"><?=e($event['title'])?></h2>
 <p style="white-space:pre-line"><?=e($event['description'])?></p>
 <hr><p class="text-muted small">Created: <?=e($event['created_at']??'—')?></p>
-</div></body></html>
+</div><?php include 'session_warning.php'; ?>
+</body></html>

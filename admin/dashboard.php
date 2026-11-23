@@ -1,7 +1,7 @@
 <?php
 session_start();
-require "db.php";
-if (!isset($_SESSION['admin_id'])) { header("Location: login.php"); exit; }
+require 'db.php';
+require 'auth.php';
 
 // Flash message
 $flash = $_SESSION['flash'] ?? null;
@@ -40,28 +40,7 @@ function e($v){ return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8'); }
 
 <!-- Sidebar toggle (mobile) -->
 <button class="toggle-btn" id="sidebarToggle"><i class="bi bi-list"></i></button>
-
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar">
-    <div class="brand">
-        <img src="../img/logo.png" alt="Logo">
-        <div>
-            <div style="font-weight:700;font-size:.9rem;">Fatima VTC</div>
-            <div style="font-size:.75rem;opacity:.6;">Admin Panel</div>
-        </div>
-    </div>
-    <a href="dashboard.php" class="active"><i class="bi bi-speedometer2 me-2"></i>Dashboard</a>
-    <a href="upload.php?type=gallery"><i class="bi bi-images me-2"></i>Gallery Uploads</a>
-    <a href="upload.php?type=event"><i class="bi bi-cloud-upload me-2"></i>Event Images</a>
-    <a href="events.php"><i class="bi bi-calendar-event me-2"></i>Manage Events</a>
-    <a href="messages.php"><i class="bi bi-envelope me-2"></i>Messages <?php if($unreadMessages>0): ?><span class="badge bg-danger ms-1"><?=$unreadMessages?></span><?php endif; ?></a>
-    <a href="subscribers.php"><i class="bi bi-people me-2"></i>Subscribers</a>
-    <?php if(($_SESSION['role']??'')==='superadmin'): ?>
-    <a href="users.php"><i class="bi bi-person-gear me-2"></i>Manage Users</a>
-    <?php endif; ?>
-    <a href="../index.html"><i class="bi bi-house me-2"></i>View Website</a>
-    <a href="logout.php" class="logout-btn"><i class="bi bi-box-arrow-right me-2"></i>Logout</a>
-</div>
+<?php include 'sidebar.php'; ?>
 
 <!-- Main Content -->
 <div class="main">
@@ -240,4 +219,5 @@ const toggle=document.getElementById('sidebarToggle'),sidebar=document.getElemen
 if(toggle) toggle.addEventListener('click',()=>sidebar.classList.toggle('open'));
 document.addEventListener('click',e=>{if(window.innerWidth<768&&!sidebar.contains(e.target)&&!toggle.contains(e.target)) sidebar.classList.remove('open');});
 </script>
+<?php include 'session_warning.php'; ?>
 </body></html>

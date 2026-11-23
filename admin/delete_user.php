@@ -1,11 +1,8 @@
 <?php
 session_start();
-require "db.php";
-
-if (!isset($_SESSION['admin_id']) || $_SESSION['role'] !== 'superadmin') {
-    header("Location: login.php");
-    exit;
-}
+require 'db.php';
+require 'auth.php';
+if (($_SESSION['role']??'')!=='superadmin'){header('Location: dashboard.php');exit;}
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];

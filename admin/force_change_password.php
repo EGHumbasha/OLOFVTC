@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <hr>
 
     <form method="POST">
+        <input type="hidden" name="_csrf" value="<?= htmlspecialchars($csrfToken ?? $_SESSION['csrf_token'] ?? '') ?>">
         <label>New Password</label>
         <input type="password" name="password" class="form-control" required>
 
