@@ -8,6 +8,11 @@ function e($v){return htmlspecialchars((string)$v,ENT_QUOTES,'UTF-8');}
 function eventImg($e){ $f=basename($e['image']??''); if($f&&file_exists(__DIR__.'/admin/uploads/events/'.$f)) return 'admin/uploads/events/'.e($f); return 'img/placeholder.jpg'; }
 ?>
 <!DOCTYPE html><html lang="en"><head>
+<script>
+(function(){function h(){var s=document.getElementById('spinner');if(s){s.style.display='none';s.classList.remove('show');}}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',h);}else{h();}
+window.addEventListener('load',h);setTimeout(h,3000);})();
+</script>
 <meta charset="UTF-8"><title>News &amp; Events — Our Lady of Fatima VTC</title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="icon" href="img/favicon.ico">
@@ -75,7 +80,10 @@ body{background:#f8f9fa;font-family:'Heebo',sans-serif;}
                 <div class="body">
                     <div class="event-title"><?=e($ev['title'])?></div>
                     <p class="event-date"><i class="bi bi-calendar me-2"></i><?=date("F d, Y",strtotime($ev['event_date']))?></p>
-                    <p><?=nl2br(e(substr($ev['description'],0,140)))?>...</p>
+                    <p class="flex-grow-1"><?=nl2br(e(substr($ev['description'],0,140)))?><?= strlen($ev['description'])>140 ? '…' : '' ?></p>
+                    <a href="event.php?id=<?=$ev['id']?>" class="btn btn-primary btn-sm mt-2 align-self-start">
+                        <i class="bi bi-arrow-right-circle me-1"></i>Read Full Report
+                    </a>
                 </div>
             </div>
         </div>
@@ -90,7 +98,10 @@ body{background:#f8f9fa;font-family:'Heebo',sans-serif;}
                 <div class="body">
                     <div class="event-title"><?=e($ev['title'])?></div>
                     <p class="event-date"><i class="bi bi-calendar-check me-2"></i><?=date("F d, Y",strtotime($ev['event_date']))?></p>
-                    <p><?=nl2br(e(substr($ev['description'],0,140)))?>...</p>
+                    <p class="flex-grow-1"><?=nl2br(e(substr($ev['description'],0,140)))?><?= strlen($ev['description'])>140 ? '…' : '' ?></p>
+                    <a href="event.php?id=<?=$ev['id']?>" class="btn btn-outline-primary btn-sm mt-2 align-self-start">
+                        <i class="bi bi-arrow-right-circle me-1"></i>Read Full Report
+                    </a>
                 </div>
             </div>
         </div>

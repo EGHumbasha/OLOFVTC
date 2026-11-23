@@ -19,6 +19,14 @@ $categories=array_filter($categories,fn($c)=>!empty($categoryImages[$c]));
 if(!empty($categoryNewest)){arsort($categoryNewest);$categories=array_intersect_key(array_flip(array_keys($categoryNewest)),array_flip($categories));$categories=array_keys($categories);}
 ?>
 <!DOCTYPE html><html lang="en"><head>
+<script>
+(function(){
+    function h(){var s=document.getElementById('spinner');if(s){s.style.display='none';s.classList.remove('show');}}
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',h);}else{h();}
+    window.addEventListener('load',h);
+    setTimeout(h,3000);
+})();
+</script>
 <meta charset="utf-8"><title>Gallery — Our Lady of Fatima VTC</title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <link rel="icon" href="img/favicon.ico">

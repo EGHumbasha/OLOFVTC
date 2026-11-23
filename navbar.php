@@ -31,7 +31,7 @@
                 <li class="nav-item"><a href="events.php" class="nav-link">News &amp; Updates</a></li>
                 <li class="nav-item"><a href="gallery.php" class="nav-link">Gallery</a></li>
                 <li class="nav-item"><a href="contact.php" class="nav-link">Contact Us</a></li>
-                <li class="nav-item"><a href="portal.php" class="nav-link">Student Portal</a></li>
+                <li class="nav-item"><a href="coming-soon.php" class="nav-link">Student Portal</a></li>
             </ul>
             <div class="d-flex align-items-center ms-3">
                 <a href="enroll.php" class="btn btn-enroll d-none d-lg-inline">Enroll Now</a>

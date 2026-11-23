@@ -2,6 +2,14 @@
 <html lang="en">
 
 <head>
+<script>
+(function(){
+    function h(){var s=document.getElementById('spinner');if(s){s.style.display='none';s.classList.remove('show');}}
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',h);}else{h();}
+    window.addEventListener('load',h);
+    setTimeout(h,3000);
+})();
+</script>
     <meta charset="utf-8">
     <title>Our Lady of Fatima Vocational Training Centre</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
